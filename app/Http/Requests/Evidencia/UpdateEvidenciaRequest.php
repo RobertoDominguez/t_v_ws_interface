@@ -33,7 +33,7 @@ class UpdateEvidenciaRequest extends FormRequest
         return [
             'file'=>['bail','file', 'max:10240'],
             'evento_id'=>['bail','required','exists:eventos,id'],
-
+            'tipo'=>['bail','required','min:1', 'max:250'],
         ];
     }
 
@@ -47,7 +47,7 @@ class UpdateEvidenciaRequest extends FormRequest
         return [
             'file'=>'',
             'evento_id'=>'',
-
+            'tipo'=>''
         ];
     }
 

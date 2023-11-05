@@ -40,7 +40,7 @@ class EvidenciaController extends Controller
         $data = [
             'file'=>'',
             'evento_id'=>$request->evento_id,
-
+            'tipo'=>$request->tipo
         ];
 
         $responseArr['data'] = [];
@@ -110,7 +110,7 @@ class EvidenciaController extends Controller
         $data = [
             'file'=>$evidencia->file,
             'evento_id'=>$request->evento_id,
-
+            'tipo'=>$request->tipo
         ];
 
         $responseArr['data'] = [];

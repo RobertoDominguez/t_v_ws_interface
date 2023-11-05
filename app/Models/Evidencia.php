@@ -13,7 +13,7 @@ class Evidencia extends Model
     protected $fillable=[
         'file',
         'evento_id',
-
+        'tipo'
     ];
 
     public function scopeEvento($query,$id){

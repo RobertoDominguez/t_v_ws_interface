@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('file');
             $table->unsignedBigInteger('evento_id');
             $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('tipo');
             $table->timestamps();
             $table->softDeletes();
         });
