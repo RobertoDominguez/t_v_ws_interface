@@ -136,6 +136,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::prefix('evento')->group(function () {
     Route::post('/',[EventoController::class,'store']);
+    Route::post('/evidencia',[EventoController::class,'storeEvidencia']);
 });
 
 Route::prefix('evidencia')->group(function () {

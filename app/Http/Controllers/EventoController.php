@@ -6,6 +6,7 @@ use App\Models\Evento;
 use App\Http\Requests\Evento\IndexEventoRequest;
 use App\Http\Requests\Evento\StoreEventoRequest;
 use App\Http\Requests\Evento\UpdateEventoRequest;
+use App\Models\Evidencia;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use \Exception;
@@ -83,6 +84,53 @@ class EventoController extends Controller
         }
     }
 
+    public function storeEvidencia(StoreEventoRequest $request)
+    {
+        $data = [
+            'fecha'=>$request->fecha,
+            'descripcion'=>$request->descripcion,
+            'es_queja'=>$request->es_queja,
+            'trabajador_id'=>$request->trabajador_id,
+            'camara_id'=>$request->camara_id,
+
+        ];
+
+        $responseArr['data'] = [];
+        $responseArr['message'] = '<Evento> Registro exitoso';
+
+        try {
+            DB::beginTransaction();
+
+
+            $evento = Evento::create($data);
+
+
+            $data2 = [
+                'file'=>'',
+                'evento_id'=>$evento->id,
+                'tipo'=>$request->tipo
+            ];
+
+            if ($request->hasFile('file')) {
+                $data2['file'] = Storage::disk('public')->put('file', $request->file);
+            }
+
+            $evidencia = Evidencia::create($data2);
+
+            DB::commit();
+
+            $responseArr['data'] = $evento;
+            return response()->json($responseArr, Response::HTTP_OK);
+        } catch (Exception $e) {
+            DB::rollBack();
+
+
+            $message = $e;
+            $responseArr['data'] = [];
+            $responseArr['message'] = $message;
+            return response()->json($responseArr, Response::HTTP_GATEWAY_TIMEOUT);
+        }
+    }
 
     public function show(Evento $evento)
     {
