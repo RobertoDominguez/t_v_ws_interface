@@ -53,7 +53,8 @@ Route::prefix('guardia')->group(function () {
 
         Route::get('/informes', [InformeControllerWeb::class, 'indexGuardia'])->name('guardia.informes.index');
         Route::get('/eventos', [EventoControllerWeb::class, 'indexGuardia'])->name('guardia.eventos.index');
-        Route::get('/crear_informe', [EventoControllerWeb::class, 'indexGuardia'])->name('guardia.informe.crear');
+        Route::get('/crear_informe/{evento}', [InformeControllerWeb::class, 'createView'])->name('guardia.informe.crear');
+        Route::post('/crear_informe/{evento}', [InformeControllerWeb::class, 'store'])->name('guardia.informe.store');
         Route::get('/evidencias/{evento}', [EvidenciaControllerWeb::class, 'indexGuardia'])->name('guardia.evidencia.index');
 
     });

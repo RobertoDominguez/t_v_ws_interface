@@ -46,7 +46,7 @@
                                     <td>{{ $p->camara }}</td>
                                     <td>Sistema</td>
                                     <td><a class="btn btn-primary" href="{{route('guardia.evidencia.index',$p->id)}}">Evidencias</a></td>
-                                    <td><a class="btn btn-primary" href="{{route('guardia.informe.crear')}}">Realizar Informe</a></td>
+                                    <td><a class="btn btn-primary" href="{{route('guardia.informe.crear',$p->id)}}">Realizar Informe</a></td>
                                 </tr>
                             @endforeach
 

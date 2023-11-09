@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Evento;
 use App\Models\Guardia;
 use App\Models\Informe;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,14 +26,19 @@ class InformeControllerWeb extends Controller
         return view('guardia.informe.index',compact('informes'));
     }
 
-    public function createView(Request $request){
+    public function createView(Evento $evento){
+
+        return view('guardia.informe.crear',compact('evento'));
+    }
+
+    public function store(Request $request){
 
         $credentials = $this->validate(
             request(),
             [
-                'evento_id' => 'required|string|unique:eventos,id',
+                'evento_id' => 'required|string|exists:eventos,id',
                 'titulo' => 'required|string',
-                'documento' => 'required|string',
+                'documento' => 'required',
             ]
         );
 
@@ -40,14 +47,16 @@ class InformeControllerWeb extends Controller
             'evento_id'=>$request->evento_id,
             'titulo'=>$request->titulo,
             'guardia_id'=>auth()->user()->id,
-            'documento'=>''
+            'documento'=>'',
         ];
 
         if ($request->hasFile('documento')) {
             $data['documento'] = Storage::disk('public')->put('documentos', $request->documento);
         }
 
-        return redirect()->route('');
+        Informe::create($data);
+
+        return redirect()->route('guardia.informes.index',$request->evento_id);
 
     }
 

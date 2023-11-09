@@ -16,9 +16,11 @@
             @endforeach
         @endif
 
-        <form action="{{ route('admin.vendedor.guardar') }}" method="POST" >
+        <form action="{{ route('guardia.informe.store',$evento->id) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             
+            <input type="text" name="evento_id" value="{{$evento->id}}" hidden>
+
             <div class="mb-3">
                 <label for="exampleFormControlInput9" class="form-label">Titulo</label>
                 <input type="text" class="form-control" id="exampleFormControlInput9" name="titulo"
