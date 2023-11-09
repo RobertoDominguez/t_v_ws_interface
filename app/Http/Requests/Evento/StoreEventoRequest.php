@@ -34,7 +34,7 @@ class StoreEventoRequest extends FormRequest
             'fecha'=>['bail','required','date'],
             'descripcion'=>['bail','required','min:1', 'max:250'],
             'es_queja'=>['bail','required','max:1'],
-            'trabajador_id'=>['bail','required','exists:trabajadors,id'],
+            'trabajador_id'=>['bail','exists:trabajadors,id'],
             'camara_id'=>['bail','required','exists:camaras,id'],
 
         ];

@@ -31,9 +31,9 @@ class StoreEvidenciaRequest extends FormRequest
     public function rules()
     {
         return [
-            'file'=>['bail','file', 'max:10240'],
-            'evento_id'=>['bail','required','exists:eventos,id'],
-            'tipo'=>['bail','required','min:1', 'max:250'],
+            //'evento_id'=>['bail','required','exists:eventos,id'],
+            //'tipo'=>['bail','required','min:1', 'max:250'],
+           // 'file'=>['bail','file', 'max:10240'],
         ];
     }
 
@@ -45,9 +45,9 @@ class StoreEvidenciaRequest extends FormRequest
     public function attributes()
     {
         return [
-            'file'=>'',
-            'evento_id'=>'',
-            'tipo'=>''
+            'file'=>'file',
+            'evento_id'=>'id evento',
+            'tipo'=>'tipo'
         ];
     }
 

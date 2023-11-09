@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('estado');
             $table->date('fecha_ini');
-            $table->date('fecha_fin');
+            $table->date('fecha_fin')->nullable();
             $table->unsignedBigInteger('persona_id');
             $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->string('descripcion');
             $table->boolean('es_queja');
-            $table->unsignedBigInteger('trabajador_id');
+            $table->unsignedBigInteger('trabajador_id')->nullable();
             $table->foreign('trabajador_id')->references('id')->on('trabajadors')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('camara_id');
             $table->foreign('camara_id')->references('id')->on('camaras')->onDelete('cascade')->onUpdate('cascade');

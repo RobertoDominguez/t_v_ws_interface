@@ -91,7 +91,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('evento')->group(function () {
         Route::get('/',[EventoController::class,'index']);
         Route::get('/{evento}',[EventoController::class,'show']);
-        Route::post('/',[EventoController::class,'store']);
+        // Route::post('/',[EventoController::class,'store']);
         Route::put('/{evento}',[EventoController::class,'update']);
         Route::delete('/{evento}',[EventoController::class,'destroy']);
         Route::post('/restore',[EventoController::class,'restore']);
@@ -100,7 +100,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('evidencia')->group(function () {
         Route::get('/',[EvidenciaController::class,'index']);
         Route::get('/{evidencia}',[EvidenciaController::class,'show']);
-        Route::post('/',[EvidenciaController::class,'store']);
+        // Route::post('/',[EvidenciaController::class,'store']);
         Route::put('/{evidencia}',[EvidenciaController::class,'update']);
         Route::delete('/{evidencia}',[EvidenciaController::class,'destroy']);
         Route::post('/restore',[EvidenciaController::class,'restore']);
@@ -130,4 +130,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/test1', function () {
         return 'works';
     })->middleware('ability:user_store,administrator');
+});
+
+
+
+Route::prefix('evento')->group(function () {
+    Route::post('/',[EventoController::class,'store']);
+});
+
+Route::prefix('evidencia')->group(function () {
+    Route::post('/',[EvidenciaController::class,'store']);
 });
