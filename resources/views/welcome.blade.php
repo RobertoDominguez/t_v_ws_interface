@@ -19,6 +19,25 @@
     <script src="{{asset('js/submit-form.js')}}"></script>
     <script src="{{asset('js/vendor/isotope.pkgd.min.js')}}"></script>
 
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <df-messenger
+    project-id="lithe-sunset-398319"
+    agent-id="31ead8e7-12d6-4cd9-8f4a-d486e6a9c421"
+    language-code="en">
+    <df-messenger-chat-bubble
+    chat-title="innovWare">
+    </df-messenger-chat-bubble>
+    </df-messenger>
+    <style>
+    df-messenger {
+        z-index: 999;
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+    }
+    </style>
+
     <!-- Header -->
     <!--<section class="sticky-top bg-accent-color-1">
         <div class="r-container">
@@ -844,6 +863,7 @@
 
     <script src="{{asset('assets/js/vendor/fslightbox.js')}}"></script>
     <script src="{{asset('assets/js/masonry.js')}}"></script>
+
 </body>
 
 </html>
